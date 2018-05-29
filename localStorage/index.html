@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Subscribers</title>
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+</head>
+<body>
+
+<div class="wrapper">
+	<form id="fb-subscriber" class="form-horizontal" action="" method="POST">
+		<fieldset>
+			<legend>Subscriber</legend>
+			
+			<div class="control-group">
+				<label class="control-label" for="name">Name</label>
+				<div class="controls">
+					<input type="text" id="name" required="required" />
+				</div>
+			</div>
+			
+			<div class="control-group">
+				<label class="control-label" for="email">E-mail</label>
+				<div class="controls">
+					<input type="email" id="email" required="required" />
+				</div>
+			</div>
+
+			<div class="buttons">
+				<input type="submit" class="btn btn-primary" value="Save" />
+				<input type="reset" class="btn" value="Cancel" />
+			</div>
+			
+			<p>
+				If you wanna know more details about this 
+				<a href="subscribers.zip">example</a> you can 
+				<a href="subscribers.zip">download it</a>. 
+			</p>
+		</fieldset>
+	</form>
+
+	<table id="tb-subscriber" class="table table-bordered table-striped">
+		<caption>Subscribers</caption>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>E-mail</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+</div>
+
+<script type="text/javascript" src="js/SubscriberDAO.js"></script>
+<script type="text/javascript" src="js/TableController.js"></script>
+<script type="text/javascript" src="js/Index.js"></script>
+
+</body>
+</html>
