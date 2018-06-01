@@ -1,10 +1,7 @@
 'use strict'
 
-let db
 let version = 1
 const request = indexedDB.open('messageStore', version)
-
-request.addEventListener('error', event => console.log(event))
 
 request.addEventListener('upgradeneeded', event => {
   const upgradeDB = event.target.result
@@ -13,10 +10,16 @@ request.addEventListener('upgradeneeded', event => {
   })
 })
 
+request.addEventListener('error', event => console.log(event))
 request.addEventListener('success', event => {
-  db = event.target.result
+  const db = event.target.result
+  saveData(db)
 })
 
-const transaction = db.transaction(['messages'], 'readwrite')
-const objectStore = transaction.objectStore('messages')
-const messagesRequest = objectStore.put({sid:1, name:'Edy Segura'})
+function saveData(db) {
+  const transaction = db.transaction(['messages'], 'readwrite')
+  const objectStore = transaction.objectStore('messages')
+  const request = objectStore.put({ sid: 1, name: 'Lidy Segura' })
+  // request.addEventListener('success', event => console.log(event))
+  request.addEventListener('error', event => console.log(event))
+}
