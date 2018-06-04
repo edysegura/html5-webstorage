@@ -1,3 +1,5 @@
+'use strict'
+
 const pokeData = [
   {
     "id": "004",
