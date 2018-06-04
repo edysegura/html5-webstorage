@@ -8,4 +8,5 @@ HTML5 Web Storage examples
 
 ## References
 
+- [An empty database in every pocket](https://www.youtube.com/watch?v=_DuwZSXEwDg&t=2316s)
 - [Browser database comparison](http://nolanlawson.github.io/database-comparison/)
