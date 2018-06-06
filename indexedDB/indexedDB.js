@@ -48,14 +48,10 @@ function loadData() {
     .objectStore('pokemons')
 
   const listData = event => {
-    const cursor = event.target.result
-    if(cursor) {
-      console.log(cursor.value)
-      cursor.continue()
-    }
+    const pokemons = event.target.result
+    console.dir(pokemons)
   }
 
-  pokemonObjectStore
-    .openCursor()
-    .addEventListener('success', listData)
+  const request = pokemonObjectStore.getAll()
+  request.addEventListener('success', listData)
 }
