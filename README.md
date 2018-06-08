@@ -9,5 +9,6 @@ HTML5 Web Storage examples
 ## References
 
 - [Working With IndexedDB](https://code.tutsplus.com/tutorials/working-with-indexeddb--net-34673)
+- [Getting Start with IndexedDB](https://www.youtube.com/watch?v=g4U5WRzHitM)
 - [An empty database in every pocket](https://www.youtube.com/watch?v=_DuwZSXEwDg&t=2316s)
 - [Browser database comparison](http://nolanlawson.github.io/database-comparison/)
