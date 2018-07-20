@@ -5,6 +5,7 @@ HTML5 Web Storage examples
 ## Demos
 
 - [localStorage](http://edysegura.github.io/html5-webstorage/localStorage/)
+- [IndexedDB](http://edysegura.github.io/html5-webstorage/indexedDB/)
 
 ## References
 
