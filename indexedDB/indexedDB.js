@@ -1,61 +1,65 @@
 'use strict'
 
-const pokeData = [
+var pokeData = [
   {
-    "id": "004",
-    "name": "Charmander",
-    "type": "Fire"
+    id: '004',
+    name: 'Charmander',
+    type: 'Fire'
   },
   {
-    "id": "005",
-    "name": "Charmeleon",
-    "type": "Fire"
+    id: '005',
+    name: 'Charmeleon',
+    type: 'Fire'
   },
   {
-    "id": "006",
-    "name": "Charizard",
-    "type": "Fire/Flying"
+    id: '006',
+    name: 'Charizard',
+    type: 'Fire/Flying'
   }
 ]
 
-const version = 2
-const request = indexedDB.open('pokemonStore', version)
-let db
+var version = 2
+var request = indexedDB.open('pokemonStore', version)
+var db
 
-request.addEventListener('upgradeneeded', event => {
-  const db = event.target.result
-  const pokemonObjectStore = db.createObjectStore('pokemons', { keyPath: 'id' })
+request.addEventListener('upgradeneeded', function(event) {
+  var db = event.target.result
+  var pokemonObjectStore = db.createObjectStore('pokemons', { keyPath: 'id' })
   pokemonObjectStore.createIndex('name', 'name', { unique: false })
   pokemonObjectStore.createIndex('type', 'type', { unique: false })
 })
 
-request.addEventListener('error', event => console.log(event))
-request.addEventListener('success', event => {
+request.addEventListener('error', function(event) {
+  console.log(event)
+})
+
+request.addEventListener('success', function(event) {
   db = event.target.result
   saveData()
   loadData()
 })
 
 function saveData() {
-  const transaction = db.transaction(['pokemons'], 'readwrite')
-  const pokemonObjectStore = transaction.objectStore('pokemons')
-  pokeData.forEach(pokemon => pokemonObjectStore.put(pokemon))
+  var transaction = db.transaction(['pokemons'], 'readwrite')
+  var pokemonObjectStore = transaction.objectStore('pokemons')
+  var putInStore = function(pokemon) {
+    pokemonObjectStore.put(pokemon)
+  }
+  pokeData.forEach(putInStore)
 }
 
 function loadData() {
-  const pokemonObjectStore = db
+  var pokemonObjectStore = db
     .transaction(['pokemons'], 'readonly')
     .objectStore('pokemons')
 
-  const listData = event => {
-    const cursor = event.target.result
-    if(cursor) {
+  var listData = function(event) {
+    var cursor = event.target.result
+    if (cursor) {
       console.log(cursor.value)
       cursor.continue()
     }
   }
 
-  pokemonObjectStore
-    .openCursor()
-    .addEventListener('success', listData)
+  pokemonObjectStore.openCursor().addEventListener('success', listData)
 }
